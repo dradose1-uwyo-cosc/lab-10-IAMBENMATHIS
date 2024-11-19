@@ -1,8 +1,8 @@
-# Your Name Here
+# Benjamin
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 11/19/24
+# Lab 10
+# Lab Section: 10
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -13,13 +13,31 @@
 from hashlib import sha256 
 from pathlib import Path
 
+
 def get_hash(to_hash):
     """You can use """
     return sha256(to_hash.encode('utf-8')).hexdigest().upper()
+try:
+    hashpath = Path('hash')
+    hashstuff = hashpath.read_text()
+except:
+    print("An error has occurred, check your filenames.")
 
 
+try:
+    rockyou = Path('rockyou.txt')
+    rocks = rockyou.read_text()
+    rocklines = rocks.splitlines()
+except:
+    print("An error has occurred, check your filenames.")
+else:
+    for line in rocklines:
+        if get_hash(line) == hashstuff:
+            print(line)
+            break
 
-# Files and Exceptions
+
+# # Files and Exceptions
 
 # For this assignment, you will be writing a program to "crack" a password. You will need to open the file `hash` as this is the password you are trying to "crack."
 
